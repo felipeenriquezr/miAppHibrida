@@ -1,0 +1,7 @@
+{
+  "name": "MiAppHibrida",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
