@@ -1,0 +1,95 @@
+// Variables de color locales
+$glam-black: #000000;
+$glam-gold: #d4af37; // Dorado clásico
+$glam-white: #ffffff;
+
+.glam-background {
+  --background: #{$glam-black};
+  color: $glam-white;
+}
+
+.login-header {
+  margin-top: 15%;
+  margin-bottom: 40px;
+
+  .logo-circle {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    border: 2px solid $glam-gold;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    ion-icon {
+      font-size: 40px;
+      color: $glam-gold;
+    }
+  }
+}
+
+.glam-title {
+  font-family: 'serif'; // O una fuente elegante que tengas
+  color: $glam-gold;
+  font-size: 1.8rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.glam-subtitle {
+  color: $glam-white;
+  font-size: 0.9rem;
+  opacity: 0.8;
+  padding: 0 20px;
+}
+
+.glam-item {
+  --background: transparent;
+  --color: #{$glam-white};
+  --border-color: #{$glam-gold};
+  --highlight-color-focused: #{$glam-gold};
+  margin-bottom: 10px;
+
+  ion-label {
+    color: rgba($glam-white, 0.7) !important;
+  }
+}
+
+.btn-gold-solid {
+  --background: #{$glam-gold};
+  --color: #{$glam-black};
+  --border-radius: 4px;
+  font-weight: bold;
+  margin-top: 25px;
+}
+
+.btn-gold-outline {
+  --color: #{$glam-gold};
+  --border-color: #{$glam-gold};
+  --border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.separator {
+  margin: 30px 0;
+  border-bottom: 1px solid rgba($glam-gold, 0.3);
+  line-height: 0.1em;
+  span {
+    background: $glam-black;
+    padding: 0 15px;
+    color: $glam-gold;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+  }
+}
+
+.gold-text {
+  color: $glam-gold;
+}
+
+.footer-text {
+  margin-top: 30px;
+  font-size: 0.85rem;
+}

@@ -10,14 +10,33 @@ import { AlertController } from '@ionic/angular';
   standalone: false,
 })
 export class AppComponent {
-  constructor(private alertController:AlertController) {}
+  
+  constructor(private alertController: AlertController) {}
 
-async mostrarMensaje(){
-  const alert = await this.alertController.create({
-    header: 'Hola',
-    message: 'Mensaje desde app híbrida',
-    buttons: ['OK'],
-  });
-  await alert.present();
+  // Método genérico para mostrar avisos de "Próximamente"
+  async presentAlert(platform: string) {
+    const alert = await this.alertController.create({
+      header: 'Registro',
+      subHeader: `Autenticación con ${platform}`,
+      message: 'La integración técnica se realizará en la siguiente fase.',
+      buttons: ['Entendido'],
+    });
+
+    await alert.present();
+  }
+
+  handleEmailAuth() {
+    console.log('Iniciando registro por Email...');
+    this.presentAlert('Email');
+  }
+
+  handleGoogleAuth() {
+    console.log('Iniciando flujo de Google...');
+    this.presentAlert('Google');
+  }
+
+  handleFacebookAuth() {
+    console.log('Iniciando flujo de Facebook...');
+    this.presentAlert('Facebook');
   }
 }

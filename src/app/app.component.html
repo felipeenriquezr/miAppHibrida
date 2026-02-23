@@ -1,19 +1,49 @@
+<ion-app>
+  <ion-content class="glam-background ion-padding ion-text-center">
+    
+    <div class="login-header">
+      <div class="logo-circle">
+        <ion-icon name="sparkles-outline"></ion-icon>
+      </div>
+      <h1 class="glam-title">Glam Spirit MakeUp</h1>
+      <p class="glam-subtitle">Crea tu cuenta y disfruta de las mejores promociones para tu maquillaje.</p>
+    </div>
 
-    <ion-header>
-      <ion-toolbar>
-        <ion-title>Mi App Híbrida</ion-title>
-      </ion-toolbar>
-    </ion-header>
-  
-    <ion-content>
-      <ion-card>
-        <ion-card-header>
-          <ion-card-title>Bienvenido a Ionic</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          Esta es mi primera app Híbrida construida en Ionic
-        </ion-card-content>
-        <ion-button expand="block" color="primary" (click)="mostrarMensaje()">Empecemos</ion-button>
-      </ion-card>
-    </ion-content>
+    <div class="auth-form">
+      <ion-item lines="full" class="glam-item">
+        <ion-label position="floating">Correo Electrónico</ion-label>
+        <ion-input type="email" placeholder="nombre@glam.com"></ion-input>
+      </ion-item>
 
+      <ion-item lines="full" class="glam-item">
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input type="password" placeholder="********"></ion-input>
+      </ion-item>
+
+      <ion-button expand="block" class="btn-gold-solid" (click)="handleEmailAuth()">
+        REGISTRARSE CON EMAIL
+      </ion-button>
+    </div>
+
+    <div class="separator">
+      <span>O ÚNETE CON</span>
+    </div>
+
+    <div class="social-auth">
+      <ion-button expand="block" fill="outline" class="btn-gold-outline" (click)="handleGoogleAuth()">
+        <ion-icon slot="start" name="logo-google"></ion-icon>
+        Google
+      </ion-button>
+
+      <ion-button expand="block" fill="outline" class="btn-gold-outline" (click)="handleFacebookAuth()">
+        <ion-icon slot="start" name="logo-facebook"></ion-icon>
+        Facebook
+      </ion-button>
+    </div>
+
+    <p class="footer-text">
+      ¿Ya eres parte del espíritu? <ion-text class="gold-text"><b>Inicia sesión</b></ion-text>
+    </p>
+
+  </ion-content>
+</ion-app>
