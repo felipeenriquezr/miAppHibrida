@@ -9,8 +9,8 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['app.component.scss'],
   standalone: false,
 })
+
 export class AppComponent {
-  
   constructor(private alertController: AlertController) {}
 
   // Método genérico para mostrar avisos de "Próximamente"
