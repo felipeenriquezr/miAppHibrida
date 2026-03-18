@@ -1,0 +1,34 @@
+// Fondo y contenedor principal
+.glam-background {
+  --background: #fffcf9; // Un tono crema suave
+}
+
+// Estilo de las imágenes de la galería
+.gallery-img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.2);
+}
+
+// Separador
+.separator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+  
+  span {
+    color: #d4af37;
+    font-weight: bold;
+    font-size: 1.1rem;
+  }
+}
+
+// Estilos del botón dorado
+.btn-gold-solid {
+  --background: #d4af37;
+  --background-activated: #c19b28;
+  --color: white;
+}

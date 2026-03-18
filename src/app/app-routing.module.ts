@@ -12,6 +12,10 @@ const routes: Routes = [
     // IMPORTANTE: Verifica que el archivo se llame exactamente register.module.ts
     loadChildren: () => import('./register.module').then(m => m.RegisterPageModule)
   },
+  {
+    path: 'gallery',
+    loadChildren: () => import('./gallery.module').then(m => m.GalleryPageModule)
+  },
   // Ruta comodín para evitar el error de "no match"
   {
     path: '**',

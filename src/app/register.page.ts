@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { Component, OnInit } from '@angular/core';
+import { AlertController, LoadingController } from '@ionic/angular'; 
 import { PhotoService } from './photo.service';
+import { AuthService } from './auth.service'; 
+import { ProfileService, UserProfile } from './profile.service'; 
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -8,40 +11,92 @@ import { PhotoService } from './photo.service';
   styleUrls: ['./register.page.scss'],
   standalone: false,
 })
-export class RegisterPage {
-  // 1. Variables vinculadas al formulario mediante [(ngModel)]
+export class RegisterPage implements OnInit {
   userEmail: string = '';
   userPass: string = '';
+  userProfile?: UserProfile;
 
   constructor(
     private alertController: AlertController,
-    public photoService: PhotoService 
+    private loadingController: LoadingController,
+    public photoService: PhotoService,
+    private authService: AuthService,
+    private profileService: ProfileService,
+    private router: Router
   ) {}
 
-  // 2. Acción principal del botón REGISTRARSE
-  handleEmailAuth() {
-    console.log('Intento de registro con:', this.userEmail);
-    // Aquí podrías añadir lógica para validar que sea un email real si quisieras
-    this.presentAlert('Email');
+  async ngOnInit() {
+    await this.photoService.loadSaved();
   }
 
-  // 3. Acciones de redes sociales (Simuladas)
-  handleGoogleAuth() {
-    this.presentAlert('Google');
+  async handleEmailAuth() {
+    const loading = await this.loadingController.create({
+      message: 'Autenticando en Glam Spirit...',
+    });
+    await loading.present();
+
+    const credentials = {
+      email: this.userEmail,
+      password: this.userPass
+    };
+
+    this.authService.login(credentials).subscribe({
+      next: (res: any) => {
+        loading.dismiss();
+        console.log('Token recibido y guardado');
+        // Importante: No llamamos a loadUserData aquí si vamos a navegar de inmediato, 
+        // o lo llamamos y luego mostramos la alerta.
+        this.presentAlert('Email');
+      },
+      error: (err: any) => {
+        loading.dismiss();
+        this.errorAlert('Error de acceso', 'Credenciales inválidas o servidor no disponible.');
+      }
+    });
   }
 
-  handleFacebookAuth() {
-    this.presentAlert('Facebook');
+  loadUserData() {
+    this.profileService.getUserProfile().subscribe({
+      next: (profile) => {
+        this.userProfile = profile;
+        console.log('Datos de usuario obtenidos con JWT:', this.userProfile);
+      },
+      error: (err) => {
+        console.error('El interceptor no pudo validar el token:', err);
+      }
+    });
   }
 
-  // 4. Alerta genérica para feedback del usuario
+  // --- Cambios aquí: Manejo del botón "Excelente" ---
+
   async presentAlert(platform: string) {
     const alert = await this.alertController.create({
       header: '¡Portal Glam Spirit!',
-      subHeader: `Autenticación vía ${platform}`,
-      message: 'Acceso validado. Desliza hacia abajo para ver tu galería de looks.',
-      buttons: ['Entendido'],
+      subHeader: `Sesión iniciada vía ${platform}`,
+      message: 'Acceso validado. Ya puedes gestionar tu galería de looks.',
+      backdropDismiss: false, // Evita que se cierre haciendo clic afuera
+      buttons: [
+        {
+          text: '¡Excelente!',
+          handler: () => {
+            // AQUÍ ocurre la magia: al presionar el botón, navega
+            this.router.navigate(['/gallery']);
+          }
+        }
+      ],
     });
     await alert.present();
   }
+
+  async errorAlert(header: string, message: string) {
+    const alert = await this.alertController.create({
+      header,
+      message,
+      buttons: ['Reintentar'],
+    });
+    await alert.present();
+  }
+
+  handleGoogleAuth() { this.presentAlert('Google'); }
+  handleFacebookAuth() { this.presentAlert('Facebook'); }
 }

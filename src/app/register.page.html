@@ -8,6 +8,13 @@
     <p class="glam-subtitle">Crea tu cuenta y disfruta de las mejores promociones para tu maquillaje.</p>
   </div>
 
+  <div *ngIf="userProfile" class="profile-badge ion-padding">
+    <ion-chip color="gold">
+      <ion-icon name="person-circle-outline"></ion-icon>
+      <ion-label>Bienvenida, {{ userProfile.name }}</ion-label>
+    </ion-chip>
+  </div>
+
   <div class="auth-form">
     <ion-item lines="full" class="glam-item">
       <ion-label position="floating">Correo Electrónico</ion-label>
@@ -32,6 +39,7 @@
       class="btn-gold-solid" 
       (click)="handleEmailAuth()"
       [disabled]="!userEmail || !userPass">
+      <ion-icon slot="start" name="mail-outline"></ion-icon>
       REGISTRARSE CON EMAIL
     </ion-button>
   </div>
@@ -52,26 +60,20 @@
     </ion-button>
   </div>
 
-  <div class="separator">
-    <span>MI GALERÍA LOOKS</span>
+  <div class="gallery-container ion-margin-top">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6" *ngFor="let photo of photoService.photos">
+          <ion-img [src]="photo.webviewPath"></ion-img>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    
+    <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+      <ion-fab-button (click)="photoService.addNewToGallery()" color="gold">
+        <ion-icon name="camera"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
   </div>
-
-  <ion-grid>
-    <ion-row>
-      <ion-col size="4" *ngFor="let photo of photoService.photos">
-        <ion-img [src]="photo.webviewPath" class="gallery-img"></ion-img>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button (click)="photoService.addNewToGallery()" color="warning">
-      <ion-icon name="camera"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
-
-  <p class="footer-text">
-    ¿Ya eres parte del espíritu? <ion-text class="gold-text"><b>Inicia sesión</b></ion-text>
-  </p>
 
 </ion-content>

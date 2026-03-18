@@ -1,5 +1,12 @@
 {
   "appId": "io.ionic.starter",
   "appName": "MiAppHibrida",
-  "webDir": "www"
+  "webDir": "www",
+  "bundledWebRuntime": false,
+  "server": {
+    "androidScheme": "http",
+    "allowNavigation": [
+      "10.0.2.2"
+    ]
+  }
 }
