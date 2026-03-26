@@ -3,6 +3,31 @@
   --background: #fffcf9; // Un tono crema suave
 }
 
+// Contenedor relativo para posicionar el botón de compra sobre la foto
+.photo-container {
+  position: relative;
+  padding: 4px;
+
+  // Botón para añadir al carrito (icono sobre la imagen)
+  .add-to-cart-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    z-index: 10;
+    margin: 0;
+    --padding-start: 0;
+    --padding-end: 0;
+    height: 32px;
+    width: 32px;
+    
+    ion-icon {
+      font-size: 24px;
+      // Sombra para que resalte si la foto es muy clara
+      filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.3));
+    }
+  }
+}
+
 // Estilo de las imágenes de la galería
 .gallery-img {
   width: 100%;
@@ -10,6 +35,7 @@
   object-fit: cover;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(212, 175, 55, 0.2);
+  display: block;
 }
 
 // Separador
@@ -23,12 +49,23 @@
     color: #d4af37;
     font-weight: bold;
     font-size: 1.1rem;
+    letter-spacing: 1px;
   }
 }
 
-// Estilos del botón dorado
+// Estilos del botón dorado (Cámara)
 .btn-gold-solid {
   --background: #d4af37;
   --background-activated: #c19b28;
   --color: white;
+  --box-shadow: 0 4px 10px rgba(212, 175, 55, 0.4);
+}
+
+// Badge del carrito para que sea legible
+ion-badge {
+  --background: #ff4444;
+  --color: white;
+  font-size: 0.7rem;
+  padding: 4px 6px;
+  border: 1px solid white;
 }

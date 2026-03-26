@@ -35,3 +35,17 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
+
+// Forzar que los modales se vean por encima de todo
+ion-modal {
+  --background: #fff !important;
+  --opacity: 1 !important;
+  --height: 100% !important;
+  --width: 100% !important;
+  z-index: 99999 !important;
+}
+
+.modal-wrapper {
+  opacity: 1 !important;
+  display: block !important;
+}

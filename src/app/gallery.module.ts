@@ -5,6 +5,8 @@ import { IonicModule } from '@ionic/angular';
 import { RouterModule, Routes } from '@angular/router';
 
 import { GalleryPage } from './gallery.page';
+// Importamos el componente del modal para registrarlo
+import { CartModalComponent } from './cart-modal.component'; 
 
 const routes: Routes = [
   {
@@ -18,7 +20,9 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    // Al ser un componente Standalone, se importa aquí para que GalleryPage pueda usarlo
+    CartModalComponent 
   ],
   declarations: [GalleryPage]
 })

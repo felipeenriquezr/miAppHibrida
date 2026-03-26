@@ -1,0 +1,29 @@
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+
+  .qty-label {
+    margin: 0 5px;
+    font-weight: bold;
+    min-width: 20px;
+    text-align: center;
+  }
+
+  ion-button {
+    --padding-start: 0;
+    --padding-end: 0;
+    margin: 0;
+    font-size: 1.2rem;
+  }
+}
+
+.footer-summary {
+  background: white;
+  border-top: 1px solid #eee;
+  
+  strong {
+    font-size: 1.2rem;
+    color: #d4af37; // Tu color dorado Glam
+  }
+}
