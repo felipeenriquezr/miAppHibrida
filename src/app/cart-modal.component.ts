@@ -12,6 +12,7 @@ interface CartItem extends Photo {
 @Component({
   selector: 'app-cart-modal',
   templateUrl: './cart-modal.component.html',
+  styleUrls: ['./cart-modal.component.scss'], // <--- ESTA LÍNEA ES LA CLAVE
   standalone: true,
   imports: [IonicModule, CommonModule]
 })

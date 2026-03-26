@@ -1,29 +1,43 @@
 .quantity-controls {
   display: flex;
   align-items: center;
-  margin-right: 10px;
+  margin-right: 12px;
 
-  .qty-label {
-    margin: 0 5px;
-    font-weight: bold;
-    min-width: 20px;
-    text-align: center;
-  }
-
-  ion-button {
+  // Botones de + y -
+  ion-button.btn-qty {
     --padding-start: 0;
     --padding-end: 0;
     margin: 0;
-    font-size: 1.2rem;
+    
+    // Aumento de 4px (De 40px/44px a 48px para un target táctil óptimo)
+    height: 48px; 
+    width: 48px;
+
+    ion-icon {
+      // Aumento proporcional del icono interno (+4px)
+      font-size: 34px; 
+      color: #d4af37; // Dorado Glam Spirit
+    }
+  }
+
+  // Número de cantidad (mantenemos el +2px que pediste antes)
+  .qty-label {
+    margin: 0 10px;
+    font-weight: 800;
+    min-width: 28px;
+    text-align: center;
+    color: #333;
+    font-size: 1.25rem; // Aproximadamente 20px
   }
 }
 
-.footer-summary {
-  background: white;
-  border-top: 1px solid #eee;
+// Botón de eliminar (Basura)
+.btn-trash {
+  height: 48px;
+  width: 48px;
+  --color: #eb445a;
   
-  strong {
-    font-size: 1.2rem;
-    color: #d4af37; // Tu color dorado Glam
+  ion-icon {
+    font-size: 28px;
   }
 }

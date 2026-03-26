@@ -49,3 +49,20 @@ ion-modal {
   opacity: 1 !important;
   display: block !important;
 }
+
+/* Estilo para el contenedor del Toast */
+.custom-toast-success {
+  --background: #28a745; /* Verde estándar de éxito */
+  --color: #ffffff;      /* Texto blanco */
+  
+  &::part(message) {
+    font-weight: 500;    /* Un poco más de cuerpo al mensaje */
+  }
+}
+
+/* Estilo para el botón OK en negrita */
+.toast-button-bold {
+  font-weight: 800 !important; /* Fuerza la negrita */
+  text-transform: uppercase;   /* Opcional: para que resalte más */
+  --color: #ffffff;
+}

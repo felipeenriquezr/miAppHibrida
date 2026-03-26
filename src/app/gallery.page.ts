@@ -27,20 +27,26 @@ export class GalleryPage implements OnInit {
   /**
    * Añade una foto (producto de maquillaje) al carrito
    */
-  async addToCart(photo: Photo) {
-    this.cartItems.push(photo);
-    this.cartCount = this.cartItems.length;
+ async addToCart(photo: Photo) {
+  this.cartItems.push(photo);
+  this.cartCount = this.cartItems.length;
 
-    const toast = await this.toastController.create({
-      message: 'Añadido a la selección de Glam Spirit',
-      duration: 1500,
-      position: 'bottom',
-      color: 'dark',
-      buttons: [{ text: 'OK', role: 'cancel' }]
-    });
-    
-    await toast.present();
-  }
+  const toast = await this.toastController.create({
+    message: '¡Añadido a la selección de Glam Spirit!',
+    duration: 1500,
+    position: 'bottom',
+    // Clase personalizada para el diseño
+    cssClass: 'custom-toast-success', 
+    buttons: [
+      {
+        text: 'OK',
+        role: 'cancel'
+      }
+    ]
+  });
+  
+  await toast.present();
+}
 
   /**
    * Abre el Modal con el resumen de productos seleccionados de Glam Spirit

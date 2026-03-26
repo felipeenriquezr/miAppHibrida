@@ -11,35 +11,39 @@
   <ion-list lines="none">
     <ion-item *ngFor="let item of items; let i = index">
       <ion-thumbnail slot="start">
-        <ion-img [src]="item.webviewPath"></ion-img>
+        <ion-img [src]="item.webviewPath" class="cart-img"></ion-img>
       </ion-thumbnail>
       
       <ion-label>
-        <h2>Producto Glam #{{ i + 1 }}</h2>
-        <p color="primary"><b>$5.000 COP</b></p>
+        <h2 class="product-title">Producto Glam #{{ i + 1 }}</h2>
+        <p class="product-price"><b>$5.000 COP</b></p>
       </ion-label>
 
       <div slot="end" class="quantity-controls">
-        <ion-button fill="clear" (click)="removeQuantity(i)">
+        <ion-button fill="clear" (click)="removeQuantity(i)" class="btn-qty">
           <ion-icon name="remove-circle-outline"></ion-icon>
         </ion-button>
+        
         <ion-label class="qty-label">{{ item.quantity }}</ion-label>
-        <ion-button fill="clear" (click)="addQuantity(i)">
+        
+        <ion-button fill="clear" (click)="addQuantity(i)" class="btn-qty">
           <ion-icon name="add-circle-outline"></ion-icon>
         </ion-button>
       </div>
 
-      <ion-button fill="clear" color="danger" slot="end" (click)="removeItem(i)">
+      <ion-button fill="clear" color="danger" slot="end" (click)="removeItem(i)" class="btn-trash">
         <ion-icon name="trash-outline"></ion-icon>
       </ion-button>
     </ion-item>
   </ion-list>
 
   <div class="ion-padding footer-summary">
-    <hr>
-    <ion-item lines="none">
+    <div class="divider"></div>
+    <ion-item lines="none" class="total-item">
       <ion-label slot="start"><strong>TOTAL:</strong></ion-label>
-      <ion-label slot="end"><strong>$ {{ total | number:'1.0-0' }} COP</strong></ion-label>
+      <ion-label slot="end">
+        <strong class="total-amount">$ {{ total | number:'1.0-0' }} COP</strong>
+      </ion-label>
     </ion-item>
     
     <ion-button expand="block" class="btn-gold-solid" (click)="checkout()">
